@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# InnoFi - Cross-Chain Lending Platform
 
-## Getting Started
+**InnoFi** is a decentralized cross-chain lending platform that allows users to borrow against collateral, including unpaid invoices for small businesses. With features like on-chain credit scores, multi-source price feeds, rewards based on **Pyth Entropy**, and secure user authentication, InnoFi ensures a seamless and transparent lending experience. Currently, InnoFi is available on multiple testnets, making it accessible for developers and early adopters.
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Key Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Cross-Chain Lending**:  
+  InnoFi enables borrowing and lending across multiple blockchain networks, allowing users to deposit collateral on one chain and borrow funds from another, removing the need for bridging and reducing transaction fees.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Flexible Collateral Options**:  
+  Users can deposit a variety of collateral types such as **USDC**, **WBTC**, **WETH**, and even **unpaid invoices** from small businesses, offering flexibility for individual users and businesses alike.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **On-Chain Credit Scoring**:  
+  InnoFi fetches real-time **on-chain credit scores** through **BlocksOut Explorer**’s API to determine loan eligibility, ensuring a fair and decentralized credit system.
 
-## Learn More
+- **Real-Time Price Feeds**:  
+  Multi-source price feeds are sourced from **Pyth Network** and **Flare Network’s FTSO**. **Chronicle Protocol** ensures that the data across different blockchains remains reliable and consistent, enabling accurate asset valuations for collateral and loans.
 
-To learn more about Next.js, take a look at the following resources:
+- **Rewards Based on Pyth Entropy**:  
+  Borrowers are rewarded based on **Pyth Entropy**, which measures the unpredictability of asset prices. Low-entropy behavior, such as stable price assets or responsible borrowing, results in rewards like **discounted interest rates** and **loyalty tokens**.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Secure Login with World ID & Dynamic Social Login**:  
+  **World ID** is used to verify that the user is a real person, ensuring a trustworthy and authentic lending environment. **Dynamic** is integrated for easy social login through platforms like **Google** and **Facebook**, allowing users to quickly access the platform with a familiar authentication process.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Subscription for Credit Score Access**:  
+  Users can check their **on-chain credit score** up to three times for free. After that, a subscription through **Gnosis Pay** is required for unlimited score checks and premium features.
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## How It Works
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### **Creating a Lending Pool**
+Liquidity providers can create lending pools by supplying collateral for specific debt tokens. When setting up a pool, they define the following parameters:
+- Loan-to-value (LTV) ratio
+- Annual percentage rate (APR)
+- Debt token (e.g., USDC, WBTC)
+
+### **Collateral Deposit & Loan Issuance**
+1. **Borrowers** deposit collateral (crypto or invoices) into the platform.
+2. The **smart contract** locks the collateral and issues a loan on the corresponding blockchain network.
+3. **On-chain credit scores** fetched via **BlocksOut API** determine the eligibility for loans.
+
+### **Repayment & Rewards**
+- Borrowers can repay loans early, at which point their collateral is unlocked.
+- **Timely repayments** result in **Pyth Entropy-based rewards**, which include:
+  - Lower interest rates for future loans.
+  - Loyalty tokens or platform incentives for responsible borrowing.
+  - Stable price behavior, leading to lower volatility in the lending ecosystem.
+
+### **Cross-Chain Communication**
+- **LayerZero** facilitates seamless cross-chain communication for collateral deposits and loan disbursements between different blockchain networks.
+
+
+## Reward System Powered by Pyth Entropy
+
+InnoFi’s **Pyth Entropy**-based reward system encourages responsible borrowing behavior by rewarding users based on the volatility or stability of their collateral assets. **Pyth Network** calculates **price entropy** across different assets, with lower entropy correlating to more stable price behavior.
+
+- **Entropy Calculation**: Measures the unpredictability of asset prices. Assets with lower entropy are considered more stable, while higher entropy indicates greater volatility.
+- **Reward Logic**: Borrowers who engage with the platform in a manner that stabilizes or reduces market volatility are rewarded with incentives, such as **discounted interest rates** or **loyalty tokens**.
+
+
+## Authentication & Social Login
+
+### **World ID**
+**World ID** ensures that users are verified as real individuals, helping to maintain a trustworthy and secure environment for all transactions on the platform.
+
+### **Dynamic Social Login**
+**Dynamic** is used to enable quick social logins, allowing users to sign in easily using their existing accounts from platforms like **Google**, **Facebook**, and others, providing a frictionless user experience.
+
+## Supported Networks
+
+InnoFi is available on the following testnets for developers and early users to test and explore the platform:
+- **Base Sepolia Testnet**
+- **OP Sepolia Testnet**
+- **Morph Testnet**
+- **Zircuit Testnet**
+
+## Technologies Used
+
+- **LayerZero**: Cross-chain communication for seamless transactions across blockchain networks.
+- **Pyth Network**: Provides real-time price feeds and entropy calculations for asset stability.
+- **Flare Network’s FTSO & Chronicle Protocol**: Ensures reliable price data aggregation across different blockchains.
+
+## Contributing
+
+Contributions are welcome! Fork this repository, create a new branch, and submit a pull request with your changes. Be sure to test your changes thoroughly and follow the project’s coding standards.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
